@@ -41,9 +41,12 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="fa fa-bars"></span> Menu
             </button>
+            
                <?php 
                wp_nav_menu(array(
                   'menu'   =>'main-menu',
+                  'theme_location'    => 'main-menu',
+                  'depth' => 1,
                   'menu_class'   =>'navbar-nav ml-auto',
                   'menu_id'   => 'main-menu1',
                   'container_class' => 'collapse navbar-collapse',

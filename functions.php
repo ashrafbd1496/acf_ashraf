@@ -20,11 +20,7 @@ if ( ! function_exists( 'acf_ashraf_setup' ) ) :
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
-
-	
 		add_theme_support( 'title-tag' );
-
-	
 		add_theme_support( 'post-thumbnails' );
 
 		// This theme uses wp_nav_menu() in one location.
@@ -65,6 +61,9 @@ if ( ! function_exists( 'acf_ashraf_setup' ) ) :
 
 		// Add theme support for selective refresh for widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
+
+		//To add theme template section option
+		add_theme_support( 'block-templates' );
 
 	
 		add_theme_support(
@@ -175,3 +174,6 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+// function get_page_templates( $post = null, $post_type = 'page' ) {
+//     return array_flip( wp_get_theme()->get_page_templates( $post, $post_type ) );
+// }
