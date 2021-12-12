@@ -3,10 +3,9 @@
 <?php
 /**
  * Template Name: Services
-
  */
 get_header();?>
-      <section class="hero-wrap hero-wrap-2" style="background-image: url('assets/images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+      <section class="hero-wrap hero-wrap-2" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/ac_services.jpg');" data-stellar-background-ratio="0.5">
          <div class="overlay"></div>
          <div class="container">
             <div class="row no-gutters slider-text align-items-end">
@@ -71,7 +70,7 @@ get_header();?>
          <div class="container">
             <div class="row d-flex no-gutters">
                <div class="col-md-6 d-flex">
-                  <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0" style="background-image:url(assets/images/about.jpg);">
+                  <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0" style="background-image:url('<?php echo get_template_directory_uri();?>/assets/images/Faq.jpg');">
                   </div>
                </div>
                <div class="col-md-6 pl-md-5 py-md-5">

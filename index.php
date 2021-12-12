@@ -1,11 +1,11 @@
+
 <?php
 /**
  * Template Name: Blog
- * Template Post Type: post, page
  */
-get_header();?>
 
-      <section class="hero-wrap hero-wrap-2" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+get_header(); ?>
+      <section class="hero-wrap hero-wrap-2" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/acus.jpg');" data-stellar-background-ratio="0.5">
          <div class="overlay"></div>
          <div class="container">
             <div class="row no-gutters slider-text align-items-end">
@@ -21,7 +21,7 @@ get_header();?>
             <div class="row d-flex">
                <div class="col-md-4 d-flex ftco-animate">
                   <div class="blog-entry align-self-stretch">
-                     <a href="blog-single.html" class="block-20 rounded" style="background-image: url('assets/images/image_1.jpg');">
+                     <a href="blog-single.html" class="block-20 rounded" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/image_1.jpg');">
                      </a>
                      <div class="text p-4">
                         <div class="meta mb-2">
@@ -35,7 +35,7 @@ get_header();?>
                </div>
                <div class="col-md-4 d-flex ftco-animate">
                   <div class="blog-entry align-self-stretch">
-                     <a href="blog-single.html" class="block-20 rounded" style="background-image: url('assets/images/image_2.jpg');">
+                     <a href="blog-single.html" class="block-20 rounded" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/blog2.jpeg');">
                      </a>
                      <div class="text p-4">
                         <div class="meta mb-2">
@@ -49,7 +49,7 @@ get_header();?>
                </div>
                <div class="col-md-4 d-flex ftco-animate">
                   <div class="blog-entry align-self-stretch">
-                     <a href="blog-single.html" class="block-20 rounded" style="background-image: url('assets/images/image_3.jpg');">
+                     <a href="blog-single.html" class="block-20 rounded" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/image_3.jpg');">
                      </a>
                      <div class="text p-4">
                         <div class="meta mb-2">
@@ -63,7 +63,7 @@ get_header();?>
                </div>
                <div class="col-md-4 d-flex ftco-animate">
                   <div class="blog-entry align-self-stretch">
-                     <a href="blog-single.html" class="block-20 rounded" style="background-image: url('assets/images/image_3.jpg');">
+                     <a href="blog-single.html" class="block-20 rounded" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/image_3.jpg');">
                      </a>
                      <div class="text p-4">
                         <div class="meta mb-2">
@@ -77,7 +77,7 @@ get_header();?>
                </div>
                <div class="col-md-4 d-flex ftco-animate">
                   <div class="blog-entry align-self-stretch">
-                     <a href="blog-single.html" class="block-20 rounded" style="background-image: url('assets/images/image_5.jpg');">
+                     <a href="blog-single.html" class="block-20 rounded" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/blog4.jpg');">
                      </a>
                      <div class="text p-4">
                         <div class="meta mb-2">
@@ -91,7 +91,7 @@ get_header();?>
                </div>
                <div class="col-md-4 d-flex ftco-animate">
                   <div class="blog-entry align-self-stretch">
-                     <a href="blog-single.html" class="block-20 rounded" style="background-image: url('assets/images/image_6.jpg');">
+                     <a href="blog-single.html" class="block-20 rounded" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/image_6.jpg');">
                      </a>
                      <div class="text p-4">
                         <div class="meta mb-2">
@@ -138,4 +138,4 @@ get_header();?>
             </div>
          </div>
       </section>
-<?php get_footer();?>
+      <?php get_footer();?>s

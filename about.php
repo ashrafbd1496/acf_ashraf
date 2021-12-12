@@ -2,9 +2,9 @@
 /**
  * Template Name: About
  */
+get_header();?>
 
-get_header(); ?>
-      <section class="hero-wrap hero-wrap-2" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+      <section class="hero-wrap hero-wrap-2" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/acus.jpg');" data-stellar-background-ratio="0.5">
          <div class="overlay"></div>
          <div class="container">
             <div class="row no-gutters slider-text align-items-end">
@@ -19,7 +19,7 @@ get_header(); ?>
          <div class="container">
             <div class="row d-flex no-gutters">
                <div class="col-md-6 d-flex">
-                  <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0" style="background-image:url(assets/images/about.jpg);">
+                  <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0" style="background-image:url('<?php echo get_template_directory_uri();?>/assets/images/image_1.jpg');">
                   </div>
                </div>
                <div class="col-md-6 pl-md-5 py-md-5">
@@ -97,7 +97,7 @@ get_header(); ?>
                            <div class="text">
                               <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                               <div class="d-flex align-items-center">
-                                 <div class="user-img" style="background-image: url(assets/images/person_1.jpg)"></div>
+                                 <div class="user-img" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/person_1.jpg')"></div>
                                  <div class="pl-3">
                                     <p class="name">Roger Scott</p>
                                     <span class="position">Marketing Manager</span>
@@ -112,7 +112,7 @@ get_header(); ?>
                            <div class="text">
                               <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                               <div class="d-flex align-items-center">
-                                 <div class="user-img" style="background-image: url(assets/images/person_2.jpg)"></div>
+                                 <div class="user-img" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/person_2.jpg')"></div>
                                  <div class="pl-3">
                                     <p class="name">Roger Scott</p>
                                     <span class="position">Marketing Manager</span>
@@ -127,7 +127,7 @@ get_header(); ?>
                            <div class="text">
                               <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                               <div class="d-flex align-items-center">
-                                 <div class="user-img" style="background-image: url(assets/images/person_3.jpg)"></div>
+                                 <div class="user-img" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/person_3.jpg')"></div>
                                  <div class="pl-3">
                                     <p class="name">Roger Scott</p>
                                     <span class="position">Marketing Manager</span>
@@ -142,7 +142,7 @@ get_header(); ?>
                            <div class="text">
                               <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                               <div class="d-flex align-items-center">
-                                 <div class="user-img" style="background-image: url(assets/images/person_1.jpg)"></div>
+                                 <div class="user-img" style="background-image: url(a'ssets/images/person_1.jpg')"></div>
                                  <div class="pl-3">
                                     <p class="name">Roger Scott</p>
                                     <span class="position">Marketing Manager</span>
@@ -157,7 +157,7 @@ get_header(); ?>
                            <div class="text">
                               <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                               <div class="d-flex align-items-center">
-                                 <div class="user-img" style="background-image: url(assets/images/person_2.jpg)"></div>
+                                 <div class="user-img" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/person_2.jpg')"></div>
                                  <div class="pl-3">
                                     <p class="name">Roger Scott</p>
                                     <span class="position">Marketing Manager</span>
@@ -176,9 +176,9 @@ get_header(); ?>
             <div class="row">
                <div class="col-lg-6">
                   <div class="img-faqs w-100">
-                     <div class="img mb-4 mb-sm-0" style="background-image:url(assets/images/about-2.jpg);">
+                     <div class="img mb-4 mb-sm-0" style="background-image:url(<?php echo get_template_directory_uri();?>/assets/images/blog4.jpg);">
                      </div>
-                     <div class="img img-2 mb-4 mb-sm-0" style="background-image:url(assets/images/about-1.jpg);">
+                     <div class="img img-2 mb-4 mb-sm-0" style="background-image:url(<?php echo get_template_directory_uri();?>/assets/images/faq2.jpg);">
                      </div>
                   </div>
                </div>
@@ -289,5 +289,4 @@ get_header(); ?>
             </div>
          </div>
       </section>
-
-      <?php get_footer(); ?>
+   <?php get_footer();?>

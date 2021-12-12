@@ -1,8 +1,7 @@
 <?php 
 
 /**
- * Template Name: Home
- *  Template Post Type: post, page
+ * Template Name: Front Page
  */
 ?>
 <?php
@@ -10,41 +9,36 @@
 get_header();?>
       <div class="hero-wrap">
          <div class="home-slider owl-carousel">
-            <div class="slider-item" style="background-image:url(<?php echo get_template_directory_uri();?>/assets/images/bg_2.jpg);">
-               <div class="overlay"></div>
-               <div class="container">
-                  <div class="row no-gutters slider-text align-items-center justify-content-center">
-                     <div class="col-md-8 ftco-animate">
-                        <div class="text w-100 text-center">
-                           <h2>We Support Business</h2>
-                           <h1 class="mb-4">The Best Business Support</h1>
-                           <p><a href="#" class="btn btn-white">Connect with us</a></p>
+            <?php
+              $sliders = get_field('sliders','options');
+               foreach($sliders as $slider){
+                  ?>
+                  <div class="slider-item" style="background-image:url(<?php echo $slider['slider_image']['url'];?>;">
+                  <div class="overlay"></div>
+                  <div class="container">
+                     <div class="row no-gutters slider-text align-items-center justify-content-center">
+                        <div class="col-md-8 ftco-animate">
+                           <div class="text w-100 text-center">
+                                    <h2><?php echo $slider['slider_subtitle'];?></h2>
+                                    <h1 class="mb-4"><?php echo $slider['slider_title'];?></h1>
+                                    <p><a href="<?php echo $sldr['slider_button_url'];?>" class="btn btn-white"><?php echo $slider['slider_button_text'];?></a></p>
+                             
+                           </div>
                         </div>
                      </div>
                   </div>
                </div>
-            </div>
-            <div class="slider-item" style="background-image:url(<?php echo get_template_directory_uri();?>/assets/images/bg_3.jpg);">
-               <div class="overlay"></div>
-               <div class="container">
-                  <div class="row no-gutters slider-text align-items-center justify-content-center">
-                     <div class="col-md-8 ftco-animate">
-                        <div class="text w-100 text-center">
-                           <h2>We Give Advice</h2>
-                           <h1 class="mb-4">Expert Financial Advice</h1>
-                           <p><a href="#" class="btn btn-white">Connect with us</a></p>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
+               <?php
+               }   
+               ?>
+           
          </div>
       </div>
       <section class="ftco-section ftco-no-pt bg-light">
          <div class="container">
             <div class="row d-flex no-gutters">
                <div class="col-md-6 d-flex">
-                  <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0" style="background-image:url(<?php echo get_template_directory_uri();?>/assets/images/about.jpg);">
+                  <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0" style="background-image:url(<?php echo get_template_directory_uri();?>/assets/images/person_1.jpg);">
                   </div>
                </div>
                <div class="col-md-6 pl-md-5 py-md-5">
@@ -277,9 +271,9 @@ get_header();?>
             <div class="row">
                <div class="col-lg-6">
                   <div class="img-faqs w-100">
-                     <div class="img mb-4 mb-sm-0" style="background-image:url(<?php echo get_template_directory_uri();?>/assets/images/about-2.jpg);">
+                     <div class="img mb-4 mb-sm-0" style="background-image:url(<?php echo get_template_directory_uri();?>/assets/images/best_business_support.jpg);">
                      </div>
-                     <div class="img img-2 mb-4 mb-sm-0" style="background-image:url(<?php echo get_template_directory_uri();?>/assets/images/about-1.jpg);">
+                     <div class="img img-2 mb-4 mb-sm-0" style="background-image:url(<?php echo get_template_directory_uri();?>/assets/images/image_3.jpg);">
                      </div>
                   </div>
                </div>
@@ -398,7 +392,7 @@ get_header();?>
                </div>
                <div class="col-md-4 d-flex ftco-animate">
                   <div class="blog-entry align-self-stretch">
-                     <a href="blog-single.html" class="block-20 rounded" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images//image_2.jpg');">
+                     <a href="blog-single.html" class="block-20 rounded" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/blog2.jpeg');">
                      </a>
                      <div class="text p-4">
                         <div class="meta mb-2">

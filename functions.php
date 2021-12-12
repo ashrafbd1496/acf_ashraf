@@ -177,3 +177,35 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 // function get_page_templates( $post = null, $post_type = 'page' ) {
 //     return array_flip( wp_get_theme()->get_page_templates( $post, $post_type ) );
 // }
+
+//ACF theme options
+
+add_action('acf/init', 'acf_ashraf_op_init');
+function acf_ashraf_op_init() {
+	
+	// Check function exists.
+	if( function_exists('acf_add_options_page') ) {
+		
+		// Register options page. add parent
+		$parent = acf_add_options_page(array(
+			'page_title' 	=> __('Theme Options','ach_ashraf'),
+			'menu_title' 	=> __('Theme Options','acf_ashraf'),
+			'menu_slug' 	=> 'theme-general-settings',
+			'capability'	=> 'edit_posts',
+			'redirect'		=> false
+		));
+
+		// Add sub page.
+		$child = acf_add_options_page(array(
+			'page_title'  => __('Header Options','acf_ashraf'),
+			'menu_title'  => __('Header Options','acf_ashraf'),
+			'parent_slug' => $parent['menu_slug'],
+		));
+		// Add sub page.Home page
+		$child = acf_add_options_page(array(
+			'page_title'  => __('Home Page Options','acf_ashraf'),
+			'menu_title'  => __('Hompe Page Options','acf_ashraf'),
+			'parent_slug' => $parent['menu_slug'],
+		));
+	}
+}
