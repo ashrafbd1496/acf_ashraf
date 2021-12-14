@@ -162,8 +162,7 @@ get_header();?>
                      </div>
                      <?php
 
-                    }
-                    
+                    }                   
                     ?>
                   </div>
                </div>
@@ -175,97 +174,60 @@ get_header();?>
             <div class="row">
                <div class="col-lg-6">
                   <div class="img-faqs w-100">
-                     <div class="img mb-4 mb-sm-0" style="background-image:url(<?php echo get_template_directory_uri();?>/assets/images/best_business_support.jpg);">
+
+                    <?php
+                    $faqs = get_field('faqs','options');
+                     if($faqs){
+                           ?>
+                           <div class="img mb-4 mb-sm-0" style="background-image: url(<?php echo $faqs['faq_image_one']['url'];?>);">
+                        </div>
+                           <div class="img img-2 mb-4 mb-sm-0" style="background-image:url(<?php echo $faqs['faq_image_two']['url'];?>);">
                      </div>
-                     <div class="img img-2 mb-4 mb-sm-0" style="background-image:url(<?php echo get_template_directory_uri();?>/assets/images/image_3.jpg);">
-                     </div>
+                                   
                   </div>
                </div>
+
                <div class="col-lg-6 pl-lg-5">
                   <div class="heading-section mb-5 mt-5 mt-lg-0">
-                     <span class="subheading">FAQs</span>
-                     <h2 class="mb-3">Frequently Asks Questions</h2>
-                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                     <span class="subheading"><?php echo $faqs['faq_subtitle'];?></span>
+                     <h2 class="mb-3"><?php echo $faqs['faq_title'];?></h2>
+                     <p><?php echo $faqs['faq_description'];?></p>
                   </div>
+                  <?php                        
+                     }                   
+                    ?>  
+
                   <div id="accordion" class="myaccordion w-100" aria-multiselectable="true">
-                     <div class="card">
-                        <div class="card-header p-0" id="headingOne">
+
+                     <?php 
+                     $faq_items = get_field('faq_items','options');
+                     if($faq_items){
+                        $i = 0;
+                        foreach($faq_items as $faq_item){
+                           $i++;
+                           ?>
+                           <div class="card">
+                        <div class="card-header p-0" id="heading<?php echo $i; ?>" role="tab">
                            <h2 class="mb-0">
-                              <button href="#collapseOne" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne">
-                                 <p class="mb-0">How to fixed a problem?</p>
+                              <button href="#collapse<?php echo $i; ?>" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapse<?php echo $i; ?>">
+                                 <p class="mb-0"><?php echo $faq_item['faq_item_title'] ;?></p>
                                  <i class="fa" aria-hidden="true"></i>
                               </button>
                            </h2>
                         </div>
-                        <div class="collapse show" id="collapseOne" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="collapse <?php if($i==1){echo 'show';} ?>" id="collapse<?php echo $i; ?>" role="tabpanel" aria-labelledby="heading<?php echo $i; ?>">
                            <div class="card-body py-3 px-0">
-                              <ol>
-                                 <li>Far far away, behind the word mountains</li>
-                                 <li>Consonantia, there live the blind texts</li>
-                                 <li>When she reached the first hills of the Italic Mountains</li>
-                                 <li>Bookmarksgrove, the headline of Alphabet Village</li>
-                                 <li>Separated they live in Bookmarksgrove right</li>
-                              </ol>
+                           <?php echo $faq_item['faq_item_details'] ;?>
                            </div>
                         </div>
                      </div>
-                     <div class="card">
-                        <div class="card-header p-0" id="headingTwo" role="tab">
-                           <h2 class="mb-0">
-                              <button href="#collapseTwo" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapseTwo">
-                                 <p class="mb-0">How to manage your business loans?</p>
-                                 <i class="fa" aria-hidden="true"></i>
-                              </button>
-                           </h2>
-                        </div>
-                        <div class="collapse" id="collapseTwo" role="tabpanel" aria-labelledby="headingTwo">
-                           <div class="card-body py-3 px-0">
-                              <ol>
-                                 <li>Far far away, behind the word mountains</li>
-                                 <li>Consonantia, there live the blind texts</li>
-                                 <li>When she reached the first hills of the Italic Mountains</li>
-                                 <li>Bookmarksgrove, the headline of Alphabet Village</li>
-                                 <li>Separated they live in Bookmarksgrove right</li>
-                              </ol>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="card">
-                        <div class="card-header p-0" id="headingThree" role="tab">
-                           <h2 class="mb-0">
-                              <button href="#collapseThree" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapseThree">
-                                 <p class="mb-0">How to grow your investments funds?</p>
-                                 <i class="fa" aria-hidden="true"></i>
-                              </button>
-                           </h2>
-                        </div>
-                        <div class="collapse" id="collapseThree" role="tabpanel" aria-labelledby="headingTwo">
-                           <div class="card-body py-3 px-0">
-                              <ol>
-                                 <li>Far far away, behind the word mountains</li>
-                                 <li>Consonantia, there live the blind texts</li>
-                                 <li>When she reached the first hills of the Italic Mountains</li>
-                                 <li>Bookmarksgrove, the headline of Alphabet Village</li>
-                                 <li>Separated they live in Bookmarksgrove right</li>
-                              </ol>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="card">
-                        <div class="card-header p-0" id="headingFour" role="tab">
-                           <h2 class="mb-0">
-                              <button href="#collapseFour" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapseFour">
-                                 <p class="mb-0">What are those requirements for businesses?</p>
-                                 <i class="fa" aria-hidden="true"></i>
-                              </button>
-                           </h2>
-                        </div>
-                        <div class="collapse" id="collapseFour" role="tabpanel" aria-labelledby="headingTwo">
-                           <div class="card-body py-3 px-0">
-                              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                           </div>
-                        </div>
-                     </div>
+
+                     <?php
+
+                        }
+                     }
+                     ?>
+                  
                   </div>
                </div>
             </div>
@@ -275,53 +237,44 @@ get_header();?>
          <div class="container">
             <div class="row justify-content-center pb-5 mb-3">
                <div class="col-md-7 heading-section text-center ftco-animate">
-                  <span class="subheading">News &amp; Blog</span>
-                  <h2>Latest news from our blog</h2>
+                     <?php 
+                     $blog = get_field('blog','option');                                          
+                     ?>
+                  <span class="subheading"><?php echo $blog['blog_subtitile']; ?></span>
+                  <h2><?php echo $blog['blog_title']; ?></h2>
                </div>
             </div>
             <div class="row d-flex">
-               <div class="col-md-4 d-flex ftco-animate">
+               <?php
+                  $args = array(
+                     'post_type' => 'post',
+                     'posts_per_page' => 3,
+                     'order' => 'DESC'
+                  );
+                  $query = new WP_Query($args);
+                     while($query -> have_posts()){
+                        $query ->the_post();
+                        ?>
+                         <div class="col-md-4 d-flex ftco-animate">
                   <div class="blog-entry align-self-stretch">
-                     <a href="blog-single.html" class="block-20 rounded" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/image_1.jpg');">
+                     <a href="<?php the_permalink();?>" class="block-20 rounded" style="background-image: url('<?php the_post_thumbnail_url();?>');">
                      </a>
                      <div class="text p-4">
                         <div class="meta mb-2">
-                           <div><a href="#">March 31, 2020</a></div>
-                           <div><a href="#">Admin</a></div>
-                           <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
+                           <div><a href="#"><?php the_date();?></a></div>
+                           <div><a href="#"><?php the_author();?></a></div>
+                           <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> <?php echo get_comments_number();?></a></div>
                         </div>
-                        <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+                        <h3 class="heading"><a href="<?php the_permalink();?>"><?php the_title();?></a></h3>
                      </div>
                   </div>
                </div>
-               <div class="col-md-4 d-flex ftco-animate">
-                  <div class="blog-entry align-self-stretch">
-                     <a href="blog-single.html" class="block-20 rounded" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/blog2.jpeg');">
-                     </a>
-                     <div class="text p-4">
-                        <div class="meta mb-2">
-                           <div><a href="#">March 31, 2020</a></div>
-                           <div><a href="#">Admin</a></div>
-                           <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
-                        </div>
-                        <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 d-flex ftco-animate">
-                  <div class="blog-entry align-self-stretch">
-                     <a href="blog-single.html" class="block-20 rounded" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/image_3.jpg');">
-                     </a>
-                     <div class="text p-4">
-                        <div class="meta mb-2">
-                           <div><a href="#">March 31, 2020</a></div>
-                           <div><a href="#">Admin</a></div>
-                           <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
-                        </div>
-                        <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                     </div>
-                  </div>
-               </div>
+            
+            <?php
+                     }
+               
+               ?>
+              
             </div>
          </div>
       </section>
@@ -329,15 +282,12 @@ get_header();?>
          <div class="container py-5">
             <div class="row">
                <div class="col-md-7 d-flex align-items-center">
-                  <h2 class="mb-3 mb-sm-0" style="color:black; font-size: 22px;">Sign Up for Your Free 1st Accounting Consultation</h2>
+                  <h2 class="mb-3 mb-sm-0" style="color:black; font-size: 22px;"><?php echo the_field('cta_title','option');?></h2>
                </div>
                <div class="col-md-5 d-flex align-items-center">
-                  <form action="#" class="subscribe-form">
-                     <div class="form-group d-flex">
-                        <input type="text" class="form-control" placeholder="Enter email address">
-                        <input type="submit" value="Subscribe" class="submit px-3">
-                     </div>
-                  </form>
+                  <div action="#" class="subscribe-form">
+                     <?php echo do_shortcode('[contact-form-7 id="159" title="Cta form"]');?>
+                  </div>
                </div>
             </div>
          </div>
@@ -419,3 +369,4 @@ get_header();?>
          </div>
       </section>
       <?php get_footer();?>
+     

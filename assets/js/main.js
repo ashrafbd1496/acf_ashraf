@@ -60,6 +60,7 @@
 
 		$('.carousel-testimony').owlCarousel({
 			center: true,
+			autoplay: true,
 			loop: true,
 			items:1,
 			margin: 30,
@@ -133,7 +134,6 @@
     mainClass: 'mfp-fade',
     removalDelay: 160,
     preloader: false,
-
     fixedContentPos: false
   });
 
