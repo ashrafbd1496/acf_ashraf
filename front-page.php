@@ -296,75 +296,33 @@ get_header();?>
          <div class="container">
             <div class="row justify-content-center pb-5 mb-3">
                <div class="col-md-7 heading-section text-center ftco-animate">
-                  <span class="subheading">Price &amp; Plans</span>
-                  <h2>Affordable Packages</h2>
+                  <span class="subheading"><?php echo the_field('pp_subtitle','option'); ?></span>
+                  <h2><?php echo the_field('pp_title','option'); ?></h2>
                </div>
             </div>
             <div class="row">
-               <div class="col-md-6 col-lg-3 ftco-animate">
+               <?php 
+                  $price_plan = get_field('price_plan','options');
+                  foreach($price_plan as $pplan){
+                     ?>
+                      <div class="col-md-6 col-lg-3 ftco-animate">
                   <div class="block-7">
                      <div class="text-center">
-                        <span class="excerpt d-block">Personal</span>
-                        <span class="price"><sup>$</sup> <span class="number">49</span> <sub>/mos</sub></span>
+                        <span class="excerpt d-block"><?php echo $pplan['price_plan_title'];?></span>
+                        <span class="price"><sup>$</sup> <span class="number"><?php echo $pplan['price_plan_prica'];?></span> <sub>/mos</sub></span>
                         <ul class="pricing-text mb-5">
-                           <li><span class="fa fa-check mr-2"></span>Brand Strategy</li>
-                           <li><span class="fa fa-check mr-2"></span>Online Marketing</li>
-                           <li><span class="fa fa-check mr-2"></span>Branding Services</li>
-                           <li><span class="fa fa-check mr-2"></span>Creative Marketing</li>
-                           <li><span class="fa fa-check mr-2"></span>Sales Management</li>
+                          <?php echo $pplan['price_paln_details'];?>
                         </ul>
-                        <a href="#" class="btn btn-primary d-block px-2 py-3">Get Started</a>
+                        <a href="#<?php echo $pplan['price_plan_button_url'];?>" class="btn btn-primary d-block px-2 py-3"><?php echo $pplan['price_plan_button_text'];?></a>
                      </div>
                   </div>
                </div>
-               <div class="col-md-6 col-lg-3 ftco-animate">
-                  <div class="block-7">
-                     <div class="text-center">
-                        <span class="excerpt d-block">Business</span>
-                        <span class="price"><sup>$</sup> <span class="number">79</span> <sub>/mos</sub></span>
-                        <ul class="pricing-text mb-5">
-                           <li><span class="fa fa-check mr-2"></span>Brand Strategy</li>
-                           <li><span class="fa fa-check mr-2"></span>Online Marketing</li>
-                           <li><span class="fa fa-check mr-2"></span>Branding Services</li>
-                           <li><span class="fa fa-check mr-2"></span>Creative Marketing</li>
-                           <li><span class="fa fa-check mr-2"></span>Sales Management</li>
-                        </ul>
-                        <a href="#" class="btn btn-primary d-block px-2 py-3">Get Started</a>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-6 col-lg-3 ftco-animate">
-                  <div class="block-7">
-                     <div class="text-center">
-                        <span class="excerpt d-block">Ultimate</span>
-                        <span class="price"><sup>$</sup> <span class="number">109</span> <sub>/mos</sub></span>
-                        <ul class="pricing-text mb-5">
-                           <li><span class="fa fa-check mr-2"></span>Brand Strategy</li>
-                           <li><span class="fa fa-check mr-2"></span>Online Marketing</li>
-                           <li><span class="fa fa-check mr-2"></span>Branding Services</li>
-                           <li><span class="fa fa-check mr-2"></span>Creative Marketing</li>
-                           <li><span class="fa fa-check mr-2"></span>Sales Management</li>
-                        </ul>
-                        <a href="#" class="btn btn-primary d-block px-2 py-3">Get Started</a>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-6 col-lg-3 ftco-animate">
-                  <div class="block-7">
-                     <div class="text-center">
-                        <span class="excerpt d-block">Premium</span>
-                        <span class="price"><sup>$</sup> <span class="number">149</span> <sub>/mos</sub></span>
-                        <ul class="pricing-text mb-5">
-                           <li><span class="fa fa-check mr-2"></span>Brand Strategy</li>
-                           <li><span class="fa fa-check mr-2"></span>Online Marketing</li>
-                           <li><span class="fa fa-check mr-2"></span>Branding Services</li>
-                           <li><span class="fa fa-check mr-2"></span>Creative Marketing</li>
-                           <li><span class="fa fa-check mr-2"></span>Sales Management</li>
-                        </ul>
-                        <a href="#" class="btn btn-primary d-block px-2 py-3">Get Started</a>
-                     </div>
-                  </div>
-               </div>
+               <?php
+
+                  }
+               ?>
+              
+              
             </div>
          </div>
       </section>
