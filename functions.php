@@ -207,5 +207,11 @@ function acf_ashraf_op_init() {
 			'menu_title'  => __('Hompe Page Options','acf_ashraf'),
 			'parent_slug' => $parent['menu_slug'],
 		));
+		// Footer Sub Page
+		$child = acf_add_options_page(array(
+			'page_title'  => __('Footer Options','acf_ashraf'),
+			'menu_title'  => __('Footer Options','acf_ashraf'),
+			'parent_slug' => $parent['menu_slug'],
+		));
 	}
 }

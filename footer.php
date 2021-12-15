@@ -4,12 +4,20 @@
                <div class="col-md-9 py-5">
                   <div class="row">
                      <div class="col-md-4 mb-md-0 mb-4">
-                        <h2 class="footer-heading">About us</h2>
-                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                        <h2 class="footer-heading"><?php echo the_field('fabout_title','option'); ?></h2>
+                        <p><?php echo the_field('faboutus_description','option'); ?></p>
                         <ul class="ftco-footer-social p-0">
-                           <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="fa fa-twitter"></span></a></li>
-                           <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><span class="fa fa-facebook"></span></a></li>
-                           <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><span class="fa fa-instagram"></span></a></li>
+                           <?php 
+                              $Fsocial = get_field('fsocial','options');
+                             foreach($Fsocial as $social){
+                              ?>
+
+                               <li class="ftco-animate"><a href="<?php echo $social['fsocial_icon_url']; ?>" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="fa <?php echo $social['fsocial_icon']; ?>"></span></a></li>
+
+                           <?php
+                             }
+                           ?>
+                          
                         </ul>
                      </div>
                      <div class="col-md-8">
