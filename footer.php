@@ -27,7 +27,7 @@
                                  <div class="col-md-4 mb-md-0 mb-4">     
                                   
                                        <?php if ( is_active_sidebar( 'footer_menu1' ) ) { ?>
-                                           <ul id="sidebar" class="list-unstyled">
+                                           <ul class="list-unstyled">
                                        
                                             <?php dynamic_sidebar('footer_menu1'); ?>
                                             </ul>
@@ -36,22 +36,22 @@
                                       
                                  </div>
                                  <div class="col-md-4 mb-md-0 mb-4">
-                                    <h2 class="footer-heading">Discover</h2>
-                                    <ul class="list-unstyled">
-                                       <li><a href="#" class="py-1 d-block">About us</a></li>
-                                       <li><a href="#" class="py-1 d-block">Contract us</a></li>
-                                       <li><a href="#" class="py-1 d-block">Terms &amp; Conditions</a></li>
-                                       <li><a href="#" class="py-1 d-block">Policies</a></li>
-                                    </ul>
+                                     <?php if ( is_active_sidebar( 'footer_menu2' ) ) { ?>
+                                           <ul class="list-unstyled">
+                                       
+                                            <?php dynamic_sidebar('footer_menu2'); ?>
+                                            </ul>
+                                      
+                                    <?php } ?>
                                  </div>
                                  <div class="col-md-4 mb-md-0 mb-4">
-                                    <h2 class="footer-heading">Resources</h2>
-                                    <ul class="list-unstyled">
-                                       <li><a href="#" class="py-1 d-block">Security</a></li>
-                                       <li><a href="#" class="py-1 d-block">Global</a></li>
-                                       <li><a href="#" class="py-1 d-block">Charts</a></li>
-                                       <li><a href="#" class="py-1 d-block">Privacy</a></li>
-                                    </ul>
+                                     <?php if ( is_active_sidebar( 'footer_menu3' ) ) { ?>
+                                           <ul class="list-unstyled">
+                                       
+                                            <?php dynamic_sidebar('footer_menu3'); ?>
+                                            </ul>
+                                      
+                                    <?php } ?>
                                  </div>
                               </div>
                            </div>

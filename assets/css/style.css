@@ -11608,6 +11608,9 @@ textarea.form-control {
 .footer ul.list-unstyled li a {
   color: rgba(255, 255, 255, 0.5);
 }
+.footer ul.list-unstyled li a:hover{
+  color: #1ba12d;
+}
 .footer .form-consultation {
   width: 100%;
 }
