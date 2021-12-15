@@ -102,6 +102,16 @@ function acf_ashraf_widgets_init() {
 			'after_title'   => '</h2>',
 		)
 	);
+
+	 register_sidebar( array(
+        'name'          => __( 'Footer Mneu 1', 'acf_ashraf' ),
+        'id'            => 'footer_menu1',
+        'description'   => __( 'Footer menu widget.', 'acf_ashraf' ),
+        'before_widget' => '<div class="col-md-4 mb-md-0 mb-4">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2 class="footer-heading">',
+        'after_title'   => '</h2>',
+    ) );
 }
 add_action( 'widgets_init', 'acf_ashraf_widgets_init' );
 
@@ -215,3 +225,4 @@ function acf_ashraf_op_init() {
 		));
 	}
 }
+
