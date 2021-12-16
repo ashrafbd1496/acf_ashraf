@@ -252,6 +252,30 @@ function acf_ashraf_op_init() {
 			'menu_title'  => __('Footer Options','acf_ashraf'),
 			'parent_slug' => $parent['menu_slug'],
 		));
+		// About Sub Page
+		$child = acf_add_options_page(array(
+			'page_title'  => __('About Page Options','acf_ashraf'),
+			'menu_title'  => __('About Page Options','acf_ashraf'),
+			'parent_slug' => $parent['menu_slug'],
+		));
+		// Services Sub Page
+		$child = acf_add_options_page(array(
+			'page_title'  => __('Services Page Options','acf_ashraf'),
+			'menu_title'  => __('Services Page Options','acf_ashraf'),
+			'parent_slug' => $parent['menu_slug'],
+		));
+		// Contact Sub Page
+		$child = acf_add_options_page(array(
+			'page_title'  => __('Contact Page Options','acf_ashraf'),
+			'menu_title'  => __('Contact Page Options','acf_ashraf'),
+			'parent_slug' => $parent['menu_slug'],
+		));
+		// Blog Sub Page
+		$child = acf_add_options_page(array(
+			'page_title'  => __('Blog Page Options','acf_ashraf'),
+			'menu_title'  => __('Blog Page Options','acf_ashraf'),
+			'parent_slug' => $parent['menu_slug'],
+		));
 	}
 }
 
