@@ -5,13 +5,16 @@
  */
 
 get_header(); ?>
-      <section class="hero-wrap hero-wrap-2" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/acus.jpg');" data-stellar-background-ratio="0.5">
+
+<?php $blog_bg = get_field('blog_brdcm_bg','options'); ?>
+
+      <section class="hero-wrap hero-wrap-2" style="background-image: url('<?php echo $blog_bg['blogbrdcm_bg']['url']; ?>');"data-stellar-background-ratio="0.5">
          <div class="overlay"></div>
          <div class="container">
             <div class="row no-gutters slider-text align-items-end">
                <div class="col-md-9 ftco-animate pb-5">
-                  <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog <i class="ion-ios-arrow-forward"></i></span></p>
-                  <h1 class="mb-0 bread">Blog</h1>
+                  <p class="breadcrumbs mb-2"><span class="mr-2"><a href="<?php echo site_url(); ?>">Home <i class="ion-ios-arrow-forward"></i></a></span> <span><?php echo single_post_title(); ?> <i class="ion-ios-arrow-forward"></i></span></p>
+                  <h1 class="mb-0 bread"><?php echo single_post_title(); ?> </h1>
                </div>
             </div>
          </div>
