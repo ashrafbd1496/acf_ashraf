@@ -12352,6 +12352,7 @@ textarea.form-control {
 .comment-list li .vcard img {
   width: 50px;
   border-radius: 50%;
+  height: auto;
 }
 .comment-list li .comment-body {
   float: right;
@@ -12366,6 +12367,11 @@ textarea.form-control {
   letter-spacing: 0.1em;
   color: #ccc;
 }
+.comment-date{
+  color: #ccc;
+  font-size: 13px;
+}
+
 .comment-list li .comment-body .reply {
   padding: 5px 10px;
   background: #e6e6e6;

@@ -4,6 +4,10 @@
  * @package acf_ashraf
  */
 
+/**
+ * Load Custom Comments Layout file.
+ */
+//require get_template_directory() . '/inc/comments-helper.php';
 
 if ( site_url() == "http://localhost/acf_ashraf" ) {
     define( "VERSION", time() );
@@ -157,7 +161,7 @@ function acf_ashraf_scripts() {
 	wp_enqueue_style( 'owl-theme-default-css', get_template_directory_uri().'/assets/css/owl.theme.default.min.css', null, VERSION );
 	wp_enqueue_style( 'magnific-popup-css', get_template_directory_uri().'/assets/css/magnific-popup.css', null,VERSION );
 	wp_enqueue_style( 'flaticon-css', get_template_directory_uri().'/assets/css/flaticon.css',null,VERSION );
-	wp_enqueue_style( 'style-css', get_template_directory_uri().'/assets/css/style.css',null,VERSION );
+	wp_enqueue_style( 'template-style-css', get_template_directory_uri().'/assets/css/template-style.css',null,VERSION );
     wp_enqueue_style( 'acf_ashraf-style', get_stylesheet_uri());
 
     
@@ -279,3 +283,76 @@ function acf_ashraf_op_init() {
 	}
 }
 
+//function for comment wp_comment_list()
+function mytheme_comment($comment, $args, $depth) {
+    if ( 'div' === $args['style'] ) {
+        $tag       = 'div';
+        $add_below = 'comment';
+    } else {
+        $tag       = 'li';
+        $add_below = 'div-comment';
+    }?>
+
+    <<?php echo $tag; ?> <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ); ?> id="comment-<?php comment_ID() ?>">
+
+	<?php 
+    if ( 'div' != $args['style'] ) { ?>
+	 <div class="comment-author vcard">
+			<?php 
+            if ( $args['avatar_size'] != 0 ) {
+                echo get_avatar( $comment, $args['avatar_size'] ); 
+            } 
+			?>
+        </div>
+		
+        <div id="div-comment-<?php comment_ID() ?>" class="comment-body">
+		<?php
+    } ?>
+
+       
+
+		<?php 
+        if ( $comment->comment_approved == '0' ) { ?>
+            <em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.' ); ?></em><br/><?php 
+        } ?>
+
+        <div class="comment-meta commentmetadata">
+			<div class="comment-date">
+			<a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>">
+			<?php
+			 printf( __( '<h4 class="fn">%s</h4>' ), get_comment_author_link() ); 
+                /* translators: 1: date, 2: time */
+                printf( 
+                    __('%1$s at %2$s'), 
+                    get_comment_date(),  
+                    get_comment_time() 
+                ); ?>
+            </a>
+
+			<?php edit_comment_link( __( '(Edit)' ), '  ', '' ); ?>
+			</div>
+           
+			<?php comment_text(); ?>
+
+			<div class="comment-reply">
+			<?php 
+                comment_reply_link( 
+                    array_merge( 
+                        $args, 
+                        array( 
+                            'add_below' => $add_below, 
+                            'depth'     => $depth, 
+                            'max_depth' => $args['max_depth'] ,
+							'class'	=>'reply'
+                        ) 
+                    ) 
+                ); ?>
+        </div>
+        </div>
+
+		<?php 
+    if ( 'div' != $args['style'] ) : ?>
+
+        </div>
+		<?php endif;
+}

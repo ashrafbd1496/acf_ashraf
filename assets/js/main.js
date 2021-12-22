@@ -215,6 +215,13 @@
 		$(this).siblings().removeClass("active");
 	 });
 
+	 //add and remove class into comment form
+	 $("h2.comments-title").addClass("mb-5");
+	 $("div.comment-author").addClass("bio");
+	 $(".comment-list li .comment-body .comment-reply a").addClass("reply");
+
+
+
 
 })(jQuery);
 
