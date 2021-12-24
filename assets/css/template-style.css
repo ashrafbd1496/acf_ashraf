@@ -12386,7 +12386,72 @@ textarea.form-control {
   color: #fff;
   background: black;
 }
+.comment-form {
+  background-color: #f8f9fd;
+  padding: 3rem;
+}
+.comment-form label{
+  display: block;
+  font-size: 16px;
+  margin-bottom: .5rem;
 
+}
+ 
+.comment-form input,textarea {
+  display: block;
+  width: 100%;
+  /* height: calc(2.25rem + 2px); */
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  -webkit-transition: border-color 0.15s ease-in-out,
+    -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out,
+    -webkit-box-shadow 0.15s ease-in-out;
+  -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+    -webkit-box-shadow 0.15s ease-in-out;
+}
+
+.comment-form input:focus,
+.form-control:active {
+  border-color: #000000;
+}
+
+.comment-form textarea{
+  height: inherit !important;
+}
+.comment-form .form-submit input[type="submit"]{
+  background: #1ba12d;
+  border: 1px solid #1ba12d;
+  color: #fff;
+  width: auto;
+  cursor: pointer;
+  border-radius: 4px;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  padding: 1rem 1.5rem;
+
+}
+.comment-form .form-submit input[type="submit"]:hover{
+  border: 1px solid #1ba12d;
+  background: transparent;
+  color: #1ba12d;
+}
+.comment-reply-title{
+  margin-bottom: 3rem;
+}
 .search-form .form-group {
   position: relative;
 }

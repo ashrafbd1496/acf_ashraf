@@ -65,40 +65,11 @@ get_header();?>
                      </div>
                   </div>
                   <div class="sidebar-box ftco-animate">
-                     <h3>Recent Blog</h3>
-                     <div class="block-21 mb-4 d-flex">
-                        <a class="blog-img mr-4" style="background-image: url(<?php  echo get_template_directory_uri(); ?>/assets/images/image_1.jpg);"></a>
-                        <div class="text">
-                           <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                           <div class="meta">
-                              <div><a href="#"><span class="icon-calendar"></span> Mar. 31, 2020</a></div>
-                              <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                              <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="block-21 mb-4 d-flex">
-                        <a class="blog-img mr-4" style="background-image: url(<?php  echo get_template_directory_uri(); ?>/assets/images/image_2.jpg);"></a>
-                        <div class="text">
-                           <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                           <div class="meta">
-                              <div><a href="#"><span class="icon-calendar"></span> Mar. 31, 2020</a></div>
-                              <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                              <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="block-21 mb-4 d-flex">
-                        <a class="blog-img mr-4" style="background-image: url(<?php  echo get_template_directory_uri(); ?>/assets/images/image_3.jpg);"></a>
-                        <div class="text">
-                           <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                           <div class="meta">
-                              <div><a href="#"><span class="icon-calendar"></span> Mar. 31, 2020</a></div>
-                              <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                              <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                           </div>
-                        </div>
-                     </div>
+                     <?php if ( is_active_sidebar( 'recent-blog' ) ) { ?>                           
+                           <?php dynamic_sidebar('recent-blog'); ?>
+               
+                     <?php } ?>
+                    
                   </div>
                   <div class="sidebar-box ftco-animate">
                      <h3>Tag Cloud</h3>

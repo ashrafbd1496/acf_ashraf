@@ -145,6 +145,16 @@ function acf_ashraf_widgets_init() {
         'before_title'  => '<h2 class="footer-heading">',
         'after_title'   => '</h2>',
     ) );
+
+	register_sidebar( array(
+        'name'          => __('Recent Blog', 'acf_ashraf' ),
+        'id'            => 'recent-blog',
+        'description'   => __('Recent Blog widget.', 'acf_ashraf'),
+        'before_widget' => '<div class="sidebar-box ftco-animate">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3>',
+        'after_title'   => '</h3>',
+    ) );
 }
 add_action( 'widgets_init', 'acf_ashraf_widgets_init' );
 
@@ -343,7 +353,7 @@ function mytheme_comment($comment, $args, $depth) {
                             'add_below' => $add_below, 
                             'depth'     => $depth, 
                             'max_depth' => $args['max_depth'] ,
-							'class'	=>'reply'
+							
                         ) 
                     ) 
                 ); ?>
@@ -356,3 +366,96 @@ function mytheme_comment($comment, $args, $depth) {
         </div>
 		<?php endif;
 }
+//to rearrange comment reply form
+add_filter( 'comment_form_fields', 'move_comment_field' );
+function move_comment_field( $fields ) {
+    $comment_field = $fields['comment'];
+    unset( $fields['comment'] );
+    $fields['comment'] = $comment_field;
+    return $fields;
+}
+//remove wp comment Save my name, email, and website in this browser for the next time I comment checkbox
+add_filter( 'comment_form_default_fields', 'wc_comment_form_hide_cookies' );
+function wc_comment_form_hide_cookies( $fields ) {
+	unset( $fields['cookies'] );
+	return $fields;
+}
+
+
+//acf cat widget
+
+// Creating the widget 
+class acf_recent_post_widget extends WP_Widget {
+  
+    function __construct() {
+    parent::__construct(
+      
+    // Base ID of your widget
+    'acf_recent_post', 
+      
+    // Widget name will appear in UI
+    __('ACF Recent Post Widget', 'acf_ashraf'), 
+      
+    // Widget description
+    array( 'description' => __( 'Acf Recent Post Widget', 'acf_ashraf' ), ) 
+    );
+    }
+      
+    // Creating widget front-end
+      
+    public function widget( $args, $instance ) {
+    $title = apply_filters( 'widget_title', $instance['title'] );
+      
+    // before and after widget arguments are defined by themes
+    echo $args['before_widget'];
+    if ( ! empty( $title ) )
+    echo $args['before_title'] . $title . $args['after_title'];
+      
+    ?>
+        <div class="categories">
+            <?php $categories = get_categories();?>
+            <?php
+                foreach($categories as $cat) {
+            ?>
+                <li><a href="<?php echo get_category_link($cat->term_id);?>"><?php echo $cat->name;?> <span class="fa fa-chevron-right"></span></a></li>
+            <?php
+                }
+            ?>
+        </div>
+    <?php
+    echo $args['after_widget'];
+    }
+              
+    // Widget Backend 
+    public function form( $instance ) {
+    if ( isset( $instance[ 'title' ] ) ) {
+    $title = $instance[ 'title' ];
+    }
+    else {
+    $title = __( 'Services', 'acf' );
+    }
+    // Widget admin form
+    ?>
+    <p>
+    <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+    <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+    </p>
+    <?php 
+    }
+          
+    // Updating widget replacing old instances with new
+    public function update( $new_instance, $old_instance ) {
+    $instance = array();
+    $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+    return $instance;
+    }
+     
+    // Class wpb_widget ends here
+    } 
+     
+     
+    // Register and load the widget
+    function acf_cat_load_widget() {
+        register_widget( 'acf_cat_widget' );
+    }
+    add_action( 'widgets_init', 'acf_recent_post_widget');

@@ -219,6 +219,7 @@
 	 $("h2.comments-title").addClass("mb-5");
 	 $("div.comment-author").addClass("bio");
 	 $(".comment-list li .comment-body .comment-reply a").addClass("reply");
+	//  $(".comment-form input#submit").addClass("btn py-3 px-4 btn-primary");
 
 
 

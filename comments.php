@@ -50,13 +50,15 @@ if ( post_password_required() ) {
     endif;
 
     $comment_args = array(
-        'comment_notes_before'  => '<p class="required-message">'. __( 'Fields with ( * ) are required', 'usablewp' ) .'</p>',
-        'title_reply' => __( 'We would love your opinion', 'usablewp'  ),
+    
+        'title_reply' => __( 'Leave a Comment', 'acf_ashraf'  ),
         'comment_field' => '<p>' .
-            '<label for="comment">' . __( 'Let us know what you have to say:', 'usablewp' ) . '</label>' .
             '<textarea id="comment" name="comment" cols="45" rows="6" aria-required="true"></textarea>' .
             '</p>',
         'comment_notes_after'       => '',
+        'comment_notes_before'       => ''
+       
+
         );
      comment_form( $comment_args );
     ?>
