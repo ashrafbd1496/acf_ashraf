@@ -95,17 +95,7 @@ add_action( 'after_setup_theme', 'acf_ashraf_content_width', 0 );
  * Register widget area.
  */
 function acf_ashraf_widgets_init() {
-	register_sidebar(
-		array(
-			'name'          => esc_html__( 'Sidebar', 'acf_ashraf' ),
-			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'acf_ashraf' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		)
-	);
+
 	/**
 	 * Footer Menu widget1
 	 */
@@ -147,9 +137,9 @@ function acf_ashraf_widgets_init() {
     ) );
 
 	register_sidebar( array(
-        'name'          => __('Recent Blog', 'acf_ashraf' ),
-        'id'            => 'recent-blog',
-        'description'   => __('Recent Blog widget.', 'acf_ashraf'),
+        'name'          => __('Blog Sidebar', 'acf_ashraf' ),
+        'id'            => 'blog_sidebar',
+        'description'   => __('Blog Sidebar widget.', 'acf_ashraf'),
         'before_widget' => '<div class="sidebar-box ftco-animate">',
         'after_widget'  => '</div>',
         'before_title'  => '<h3>',
@@ -234,6 +224,7 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 //ACF theme options
 
 add_action('acf/init', 'acf_ashraf_op_init');
+
 function acf_ashraf_op_init() {
 	
 	// Check function exists.
@@ -382,80 +373,184 @@ function wc_comment_form_hide_cookies( $fields ) {
 }
 
 
-//acf cat widget
-
-// Creating the widget 
-class acf_recent_post_widget extends WP_Widget {
+// Creating the category widget 
+class acf_ashraf_cat_widget extends WP_Widget {
   
-    function __construct() {
-    parent::__construct(
-      
-    // Base ID of your widget
-    'acf_recent_post', 
-      
-    // Widget name will appear in UI
-    __('ACF Recent Post Widget', 'acf_ashraf'), 
-      
-    // Widget description
-    array( 'description' => __( 'Acf Recent Post Widget', 'acf_ashraf' ), ) 
-    );
-    }
-      
-    // Creating widget front-end
-      
-    public function widget( $args, $instance ) {
-    $title = apply_filters( 'widget_title', $instance['title'] );
-      
-    // before and after widget arguments are defined by themes
-    echo $args['before_widget'];
-    if ( ! empty( $title ) )
-    echo $args['before_title'] . $title . $args['after_title'];
-      
-    ?>
-        <div class="categories">
-            <?php $categories = get_categories();?>
-            <?php
-                foreach($categories as $cat) {
-            ?>
-                <li><a href="<?php echo get_category_link($cat->term_id);?>"><?php echo $cat->name;?> <span class="fa fa-chevron-right"></span></a></li>
-            <?php
-                }
-            ?>
-        </div>
-    <?php
-    echo $args['after_widget'];
-    }
-              
-    // Widget Backend 
-    public function form( $instance ) {
-    if ( isset( $instance[ 'title' ] ) ) {
-    $title = $instance[ 'title' ];
-    }
-    else {
-    $title = __( 'Services', 'acf' );
-    }
-    // Widget admin form
-    ?>
-    <p>
-    <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
-    <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
-    </p>
-    <?php 
-    }
-          
-    // Updating widget replacing old instances with new
-    public function update( $new_instance, $old_instance ) {
-    $instance = array();
-    $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-    return $instance;
-    }
-     
-    // Class wpb_widget ends here
-    } 
-     
-     
-    // Register and load the widget
-    function acf_cat_load_widget() {
-        register_widget( 'acf_cat_widget' );
-    }
-    add_action( 'widgets_init', 'acf_recent_post_widget');
+	function __construct() {
+	parent::__construct(
+	  
+	// Base ID of your widget
+	'cat_widget', 
+	  
+	// Widget name will appear in UI
+	__('Services Widget', 'acf_ashraf'), 
+	  
+	// Widget description
+	array( 'description' => __( 'Services Category Widget', 'acf_ashraf' ), ) 
+	);
+	}
+	  
+	// Creating widget front-end
+	  
+	public function widget( $args, $instance ) {
+	$title = apply_filters( 'widget_title', $instance['title'] );
+	  
+	// before and after widget arguments are defined by themes
+	echo $args['before_widget'];
+	if ( ! empty( $title ) )
+	echo $args['before_title'] . $title . $args['after_title'];
+	  ?>
+		<div class="categories">
+			<?php
+			$categories = get_categories();
+			foreach($categories as $category) {
+				?>
+				<li><a href="<?php echo get_category_link($category->term_id); ?>"><?php echo $category->name; ?><span class="fa fa-chevron-right"></span></a></li>
+
+				<?php
+			}
+			?>
+	
+		</div>
+	  <?php
+	
+	echo $args['after_widget'];
+	}
+			  
+	// Widget Backend 
+	public function form( $instance ) {
+	if ( isset( $instance[ 'title' ] ) ) {
+	$title = $instance[ 'title' ];
+	}
+	else {
+	$title = __( 'Services', 'acf_ashraf' );
+	}
+	// Widget admin form
+	?>
+	<p>
+	<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+	<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+	</p>
+	<?php 
+	}
+		  
+	// Updating widget replacing old instances with new
+	public function update( $new_instance, $old_instance ) {
+	$instance = array();
+	$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+	return $instance;
+	}
+	 
+	// Class cat_widget ends here
+	} 
+	 
+	 
+	// Register and load the widget
+	function acf_cat_load_widget() {
+		register_widget('acf_ashraf_cat_widget');
+	}
+	add_action( 'widgets_init', 'acf_cat_load_widget' );
+
+
+/**
+ * Recent Blog  widget 
+ *  */ 
+class acf_ashraf_recent_blog_widget extends WP_Widget {
+  
+	function __construct() {
+	parent::__construct(
+	  
+	// Base ID of your widget
+	'recent_blog_widget', 
+	  
+	// Widget name will appear in UI
+	__('Recent Blog Widget', 'acf_ashraf'), 
+	  
+	// Widget description
+	array( 'description' => __( 'Recent Blog Widget', 'acf_ashraf' ), ) 
+	);
+	}
+	  
+	// Creating widget front-end
+	  
+	public function widget( $args, $instance ) {
+	$title = apply_filters( 'widget_title', $instance['title'] );
+	  
+	// before and after widget arguments are defined by themes
+	echo $args['before_widget'];
+	if ( ! empty( $title ) )
+	echo $args['before_title'] . $title . $args['after_title'];
+		$post = array(
+			'post_type'	=>'post',
+			'posts_per_page'	=> 3,
+		);
+		$acf_ashraf_query = New WP_Query($post);
+		while($acf_ashraf_query->have_posts()){
+			$acf_ashraf_query->the_post();
+			?>
+			<div class="block-21 mb-4 d-flex">
+			<a class="blog-img mr-4" style="background-image: url('<?php echo the_post_thumbnail_url(); ?>');"></a>
+				<div class="text">
+					<h3 class="heading"><a href="<?php the_permalink();?>"><?php the_title();?></a></h3>
+					<div class="meta">
+						<div><a href="#"><span class="icon-calendar"></span><?php the_date();?></a></div>
+						<div><a><?php acf_ashraf_posted_by();?></a></div>
+
+					</div>
+				</div>
+			</div>
+			<?php
+		}
+	  ?>
+		 
+	  <?php
+	
+	echo $args['after_widget'];
+	}
+			  
+	// Widget Backend 
+	public function form( $instance ) {
+	if ( isset( $instance[ 'title' ] ) ) {
+	$title = $instance[ 'title' ];
+	}
+	else {
+	$title = __( 'Recent Blog', 'acf_ashraf' );
+	}
+	// Widget admin form
+	?>
+	<p>
+	<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+	<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+	</p>
+	<?php 
+	}
+		  
+	// Updating widget replacing old instances with new
+	public function update( $new_instance, $old_instance ) {
+	$instance = array();
+	$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+	return $instance;
+	}
+	 
+	// Class cat_widget ends here
+	} 
+	 
+	 
+	// Register and load the widget
+	function acf_recent_blog_load_widget() {
+		register_widget('acf_ashraf_recent_blog_widget');
+	}
+	add_action( 'widgets_init', 'acf_recent_blog_load_widget' );
+
+	/**
+	 * Display post author link
+	 */
+
+	function acf_ashraf_posted_by() {
+		$byline = sprintf(
+			esc_html_x( ' %s', 'post author', 'acf_ashraf' ),
+			'<span class="author vcard"><a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
+		);
+	
+		echo $byline ;
+	}

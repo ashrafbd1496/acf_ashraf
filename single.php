@@ -55,22 +55,9 @@ get_header();?>
                         </div>
                      </form>
                   </div>
-                  <div class="sidebar-box ftco-animate">
-                     <div class="categories">
-                        <h3>Services</h3>
-                        <li><a href="#">Market Analysis <span class="fa fa-chevron-right"></span></a></li>
-                        <li><a href="#">Accounting Advisor <span class="fa fa-chevron-right"></span></a></li>
-                        <li><a href="#">General Consultancy <span class="fa fa-chevron-right"></span></a></li>
-                        <li><a href="#">Structured Assesment <span class="fa fa-chevron-right"></span></a></li>
-                     </div>
-                  </div>
-                  <div class="sidebar-box ftco-animate">
-                     <?php if ( is_active_sidebar( 'recent-blog' ) ) { ?>                           
-                           <?php dynamic_sidebar('recent-blog'); ?>
-               
-                     <?php } ?>
-                    
-                  </div>
+                  
+                 <?php dynamic_sidebar('blog_sidebar');?>
+
                   <div class="sidebar-box ftco-animate">
                      <h3>Tag Cloud</h3>
                      <div class="tagcloud">
