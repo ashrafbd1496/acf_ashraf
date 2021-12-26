@@ -11474,6 +11474,7 @@ textarea.form-control {
 .ftco-animate {
   opacity: 0;
   visibility: hidden;
+  overflow: hidden;
 }
 
 .about-author .desc h3 {

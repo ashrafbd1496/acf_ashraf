@@ -493,7 +493,7 @@ class acf_ashraf_recent_blog_widget extends WP_Widget {
 				<div class="text">
 					<h3 class="heading"><a href="<?php the_permalink();?>"><?php the_title();?></a></h3>
 					<div class="meta">
-						<div><a href="#"><span class="icon-calendar"></span><?php the_date();?></a></div>
+						<div><a href="<?php echo get_day_link(get_post_time('Y'), get_post_time('m'), get_post_time('j'));  ?>" class="entry-date"><?php the_time('F j, Y') ?></a></div>
 						<div><a><?php acf_ashraf_posted_by();?></a></div>
 
 					</div>
