@@ -47,30 +47,9 @@ get_header();?>
                </div>
                <!-- .col-md-8 -->
                <div class="col-lg-4 sidebar pl-lg-5 ftco-animate">
-                  <div class="sidebar-box">
-                     <form action="#" class="search-form">
-                        <div class="form-group">
-                           <span class="fa fa-search"></span>
-                           <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
-                        </div>
-                     </form>
-                  </div>
                   
                  <?php dynamic_sidebar('blog_sidebar');?>
 
-                  <div class="sidebar-box ftco-animate">
-                     <h3>Tag Cloud</h3>
-                     <div class="tagcloud">
-                        <a href="#" class="tag-cloud-link">home</a>
-                        <a href="#" class="tag-cloud-link">builder</a>
-                        <a href="#" class="tag-cloud-link">build</a>
-                        <a href="#" class="tag-cloud-link">create</a>
-                        <a href="#" class="tag-cloud-link">make</a>
-                        <a href="#" class="tag-cloud-link">construction</a>
-                        <a href="#" class="tag-cloud-link">house</a>
-                        <a href="#" class="tag-cloud-link">architect</a>
-                     </div>
-                  </div>
                   <div class="sidebar-box ftco-animate">
                      <h3>Paragraph</h3>
                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>

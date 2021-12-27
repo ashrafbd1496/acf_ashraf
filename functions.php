@@ -162,6 +162,7 @@ function acf_ashraf_scripts() {
 	wp_enqueue_style( 'magnific-popup-css', get_template_directory_uri().'/assets/css/magnific-popup.css', null,VERSION );
 	wp_enqueue_style( 'flaticon-css', get_template_directory_uri().'/assets/css/flaticon.css',null,VERSION );
 	wp_enqueue_style( 'template-style-css', get_template_directory_uri().'/assets/css/template-style.css',null,VERSION );
+	wp_enqueue_style( 'search-css', get_template_directory_uri().'/assets/css/search.css',null,VERSION );
     wp_enqueue_style( 'acf_ashraf-style', get_stylesheet_uri());
 
     
@@ -554,3 +555,160 @@ class acf_ashraf_recent_blog_widget extends WP_Widget {
 	
 		echo $byline ;
 	}
+
+
+/**
+ * Tag widget 
+ *  */ 
+class acf_ashraf_tag_widget extends WP_Widget {
+  
+	function __construct() {
+	parent::__construct(
+	  
+	// Base ID of your widget
+	'acf_ashraf_tag_widget', 
+	  
+	// Widget name will appear in UI
+	__('Tag Widget', 'acf_ashraf'), 
+	  
+	// Widget description
+	array( 'description' => __( 'Tag Widget', 'acf_ashraf' ), ) 
+	);
+	}
+	  
+	// Creating widget front-end
+	  
+	public function widget( $args, $instance ) {
+	$title = apply_filters( 'widget_title', $instance['title'] );
+	  
+	// before and after widget arguments are defined by themes
+	echo $args['before_widget'];
+	if ( ! empty( $title ) )
+	echo $args['before_title'] . $title . $args['after_title'];
+		?>
+
+		<div class="tagcloud">
+		
+			<?php
+
+			$tags = get_tags();
+			foreach($tags as $tag){
+				?>		
+					<a href="<?php echo get_tag_link($tag->term_id);?>" class="tag-cloud-link"><?php echo $tag->name;?></a>
+
+				<?php } ?>
+		</div>
+
+		<?php	
+	echo $args['after_widget'];
+	}
+			  
+	// Widget Backend 
+	public function form( $instance ) {
+	if ( isset( $instance[ 'title' ] ) ) {
+	$title = $instance[ 'title' ];
+	}
+	else {
+	$title = __( 'Tag Cloud', 'acf_ashraf' );
+	}
+	// Widget admin form
+	?>
+	<p>
+	<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+	<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+	</p>
+	<?php 
+	}
+		  
+	// Updating widget replacing old instances with new
+	public function update( $new_instance, $old_instance ) {
+	$instance = array();
+	$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+	return $instance;
+	}
+	 
+	// Class cat_widget ends here
+	} 
+	 
+	 
+	// Register and load the widget
+	function acf_tag_load_widget() {
+		register_widget('acf_ashraf_tag_widget');
+	}
+	add_action( 'widgets_init', 'acf_tag_load_widget' );
+
+
+/**
+ * Search widget 
+ *  */ 
+class acf_ashraf_search_widget extends WP_Widget {
+  
+	function __construct() {
+	parent::__construct(
+	  
+	// Base ID of your widget
+	'acf_ashraf_search_widget', 
+	  
+	// Widget name will appear in UI
+	__('Search Widget', 'acf_ashraf'), 
+	  
+	// Widget description
+	array( 'description' => __( 'Search Widget', 'acf_ashraf' ), ) 
+	);
+	}
+	  
+	// Creating widget front-end
+	  
+	public function widget( $args, $instance ) {
+	$title = apply_filters( 'widget_title', $instance['title'] );
+	  
+	// before and after widget arguments are defined by themes
+	echo $args['before_widget'];
+	if ( ! empty( $title ) )
+	echo $args['before_title'] . $title . $args['after_title'];
+		?>
+		<form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
+			<div class="form-group">
+				<span class="fa fa-search"></span>
+				<input type="text" value="<?php echo get_search_query(); ?>" name="s"  class="form-control" placeholder="<?php echo esc_attr_x( 'Type a Word and Hit Enter', 'acf_ashraf' ) ?>">
+			</div>
+		</form>
+		
+		<?php	
+	echo $args['after_widget'];
+	}
+			  
+	// Widget Backend 
+	public function form( $instance ) {
+	if ( isset( $instance[ 'title' ] ) ) {
+	$title = $instance[ 'title' ];
+	}
+	else {
+	$title = __( 'Search Cloud', 'acf_ashraf' );
+	}
+	// Widget admin form
+	?>
+	<p>
+	<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+	<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+	</p>
+	<?php 
+	}
+		  
+	// Updating widget replacing old instances with new
+	public function update( $new_instance, $old_instance ) {
+	$instance = array();
+	$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+	return $instance;
+	}
+	 
+	// Class cat_widget ends here
+	} 
+	 
+	 
+	// Register and load the widget
+	function acf_search_load_widget() {
+		register_widget('acf_ashraf_search_widget');
+	}
+	add_action( 'widgets_init', 'acf_search_load_widget' );
+
